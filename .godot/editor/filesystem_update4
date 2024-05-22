@@ -1,2 +1,6 @@
 res://scenes/level.tscn
 res://config/world_environment.tres
+res://scenes/gui.tscn
+res://scenes/environment.tscn
+res://scenes/coin.tscn
+res://scenes/tower.tscn
