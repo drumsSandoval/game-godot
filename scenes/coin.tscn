@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmax7wysess8m"]
+[gd_scene load_steps=9 format=3 uid="uid://dmax7wysess8m"]
 
 [ext_resource type="PackedScene" uid="uid://ul3c8y8x2v3s" path="res://assets/PowerUpsAndPickUps/Coin.gltf" id="1_djyua"]
 [ext_resource type="Script" path="res://resources/scripts/coin.gd" id="2_al3jy"]
+[ext_resource type="PackedScene" uid="uid://h13d0wwyyasw" path="res://assets/Book/book.glb" id="3_2lyb3"]
 [ext_resource type="AudioStream" uid="uid://32c67cfikjut" path="res://resources/audio/Coin.ogg" id="3_wq2n0"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_lokqw"]
-height = 1.2
-radius = 0.8
+[sub_resource type="BoxShape3D" id="BoxShape3D_ry24t"]
+size = Vector3(0.877319, 1.06174, 0.330078)
 
 [sub_resource type="Animation" id="Animation_ycvfv"]
 length = 0.001
@@ -45,26 +45,30 @@ _data = {
 "Rotate": SubResource("Animation_f0cgt")
 }
 
-[node name="Coin" instance=ExtResource("1_djyua")]
+[node name="Book" instance=ExtResource("1_djyua")]
 collision_layer = 4
 input_ray_pickable = false
 monitorable = false
 script = ExtResource("2_al3jy")
 
-[node name="Coin" parent="." index="0"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+[node name="book" parent="." index="0" instance=ExtResource("3_2lyb3")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_lokqw")
+[node name="Coin" parent="." index="1"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.00270367, 0.0215795, 0.00563288)
+mesh = null
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0.0189514, 0.111328, -0.00171661)
+shape = SubResource("BoxShape3D_ry24t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_jufaq")
 }
 autoplay = "Rotate"
 
-[node name="AudioCoin" type="AudioStreamPlayer" parent="." index="3"]
+[node name="AudioCoin" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("3_wq2n0")
 volume_db = -12.4
 
